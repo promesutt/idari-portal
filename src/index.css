@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased font-sans;
+  }
+}
+
+/* Custom Print Rules for MEB Official Documents */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-paper {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 20mm !important;
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 20mm 20mm 20mm;
+  }
+}
+
+/* Document Paper Styling (Simulation of A4 page on screen) */
+.paper-a4 {
+  background: white;
+  width: 100%;
+  max-width: 210mm;
+  min-height: 297mm;
+  padding: 22mm 20mm;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.1), 0 2px 6px -1px rgba(0, 0, 0, 0.06);
+  font-family: 'Times New Roman', Times, serif;
+  color: #111;
+  line-height: 1.45;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
