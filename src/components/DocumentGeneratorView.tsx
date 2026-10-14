@@ -551,17 +551,11 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
           <div className="paper-a4 print-paper rounded-lg border border-slate-200">
             
             {/* Header (Antet) */}
-            <div className="text-center font-bold space-y-1 mb-8">
-              <div className="text-base tracking-widest">T.C.</div>
-              <div className="text-sm">
-                {docData.district} KAYMAKAMLIĞI
-              </div>
-              <div className="text-xs font-normal">
-                İlçe Millî Eğitim Müdürlüğü
-              </div>
-              <div className="text-sm font-bold tracking-tight">
-                {docData.schoolName} Müdürlüğü
-              </div>
+            <div className="text-center font-bold text-xs space-y-1 mb-8">
+              <div>T.C.</div>
+              <div>{docData.district} KAYMAKAMLIĞI</div>
+              <div>İlçe Millî Eğitim Müdürlüğü</div>
+              <div>{docData.schoolName} Müdürlüğü</div>
             </div>
 
             {/* Number, Date, Subject */}

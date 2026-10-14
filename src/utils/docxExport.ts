@@ -93,7 +93,7 @@ export const exportOfficialDocumentToDocx = async (
           text: `${docData.district} KAYMAKAMLIĞI`,
           bold: true,
           font: 'Times New Roman',
-          size: 22, // 11pt
+          size: 24, // 12pt
         }),
       ],
     }),
@@ -103,8 +103,9 @@ export const exportOfficialDocumentToDocx = async (
       children: [
         new TextRun({
           text: 'İlçe Millî Eğitim Müdürlüğü',
+          bold: true,
           font: 'Times New Roman',
-          size: 22,
+          size: 24, // 12pt
         }),
       ],
     }),
@@ -116,7 +117,7 @@ export const exportOfficialDocumentToDocx = async (
           text: `${docData.schoolName} Müdürlüğü`,
           bold: true,
           font: 'Times New Roman',
-          size: 24,
+          size: 24, // 12pt
         }),
       ],
     })
