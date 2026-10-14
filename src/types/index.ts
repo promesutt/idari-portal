@@ -20,7 +20,8 @@ export type CategoryType =
   | 'kurullar'
   | 'projeler'
   | 'sosyal_etkinlik'
-  | 'bilsem_ozel';
+  | 'bilsem_ozel'
+  | 'oab';
 
 export interface CategoryInfo {
   id: CategoryType;

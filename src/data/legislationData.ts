@@ -144,5 +144,49 @@ export const LEGISLATION_DATA: LegislationItem[] = [
         content: 'Resmi yazılarda "Times New Roman" 12 punto veya "Arial" 11 punto yazı tipi kullanılır. Sayfa kenar boşlukları sol 2.5 cm, sağ 1.5 cm, üst 2.5 cm, alt 2.5 cm standart olarak ayarlanır.'
       }
     ]
+  },
+  {
+    id: 'leg-oab-yonetmelik',
+    title: 'MEB Okul-Aile Birliği Yönetmeliği',
+    code: 'MEB Okul-Aile Birliği Yönetmeliği (R.G. 28199)',
+    category: 'Okul Aile Birliği & TEFBİS',
+    summary: 'Okul Aile Birliklerinin kuruluşu, genel kurul zamanı, yönetim/denetim kurulu seçimleri, TEFBİS kayıtları ve harcama usulleri.',
+    keyArticles: [
+      {
+        articleNo: 'Madde 10',
+        topic: 'Genel Kurul Toplantı Zamanı (Ekim Ayı Kuralı)',
+        content: 'Birlik genel kurulu her yıl EKİM AYI SONUNA KADAR toplanır. İlk toplantıda yeter sayı (üye sayısının salt çoğunluğu) sağlanamazsa, en geç 30 gün içinde çoğunluk aranmaksızın katılanlarla yapılır.'
+      },
+      {
+        articleNo: 'Madde 12 & 13',
+        topic: 'Yönetim Kurulu ve Görev Dağılımı',
+        content: 'Genel kurulca sadece veliler arasından 5 asıl, 5 yedek üye seçilir. Yönetim kurulu ilk toplantısında Başkan, Başkan Yardımcısı, Muhasip, Sekreter ve Üye görev dağılımını yapar. Görev süresi 1 yıldır. Bir kişi en fazla 3 dönem üst üste başkan seçilebilir.'
+      },
+      {
+        articleNo: 'Madde 14',
+        topic: 'Denetleme Kurulu ve Denetim Zorunluluğu',
+        content: 'Denetleme kurulu; genel kurulca veliler arasından seçilen 1 veli ve Öğretmenler Kurulunca seçilen 2 öğretmen olmak üzere 3 asıl üyeden oluşur. Yönetim kurulunun faaliyetlerini yılda en az 2 defa denetler ve raporunu okul müdürlüğüne ve genel kurula sunar.'
+      },
+      {
+        articleNo: 'Madde 15',
+        topic: 'Bağış İlkeleri (Zorla Bağış Yasağı)',
+        content: 'Birliğin gelirleri ayni-nakdi bağışlar, etkinlik gelirleri ve kira gelirlerinden oluşur. Velilerden hiçbir surette zorla bağış, kayıt parası veya aidat adı altında para talep edilemez. Bağışlar tamamen gönüllülük esasına tabidir.'
+      },
+      {
+        articleNo: 'Madde 16',
+        topic: 'TEFBİS Sistemi ve Banka Çift İmza Yetkisi',
+        content: 'Birliğin tüm gelir ve giderleri Türkiye Eğitim Finansmanı ve Eğitim Harcamaları Bilgi Yönetim Sistemi (TEFBİS)\'ne kaydedilir. Banka hesabından para çekme ve harcamalarda Birlik Başkanı ile Muhasip Üyenin (veya Başkan Yardımcısının) ÇİFT İMZASI zorunludur.'
+      },
+      {
+        articleNo: 'Madde 17',
+        topic: 'Zorunlu Defter ve Belgeler',
+        content: 'Birlikçe; 1. Genel Kurul Tutanak Defteri, 2. Yönetim Kurulu Karar Defteri, 3. Gelen-Giden Evrak Kayıt Defteri, 4. Gelir-Gider Defteri (TEFBİS), 5. Alındı Belgeleri ve Faturalar, 6. Taşınır Mal / Demirbaş Kayıt Defteri tutulması zorunludur.'
+      },
+      {
+        articleNo: 'Madde 22',
+        topic: 'Kantin ve Alan Kiralama Gelirlerinin Paylaşımı',
+        content: 'Okul kantini ve açık alan kiralama gelirlerinin %80\'i okul birliğine kalır; %10\'u İlçe Millî Eğitim Müdürlüğüne, %10\'u ise İl Millî Eğitim Müdürlüğü payı olarak ilgili hesaplara aktarılır.'
+      }
+    ]
   }
 ];

@@ -10,6 +10,14 @@ export const CATEGORIES: CategoryInfo[] = [
     bgLight: 'bg-purple-50 border-purple-200 hover:border-purple-300'
   },
   {
+    id: 'oab',
+    title: 'Okul Aile Birliği & TEFBİS',
+    description: 'Genel Kurul, Yönetim/Denetim Kurulu Kararları, TEFBİS Harcamaları, Bağış Alındı Belgeleri ve Kantin İşlemleri',
+    icon: 'HeartHandshake',
+    color: 'text-cyan-700',
+    bgLight: 'bg-cyan-50 border-cyan-200 hover:border-cyan-300'
+  },
+  {
     id: 'personel',
     title: 'Özlük & Personel İşleri',
     description: 'İzin, Rapor, Nöbet, Ek Ders, Egzersiz Onayı, Görev Dağılımı ve Sendika Yazışmaları',
@@ -36,7 +44,7 @@ export const CATEGORIES: CategoryInfo[] = [
   {
     id: 'kurullar',
     title: 'Kurul, Komisyon ve Toplantılar',
-    description: 'Öğretmenler Kurulu, Zümreler, ŞÖK, Muayene-Kabul, Taşınır ve Okul Aile Birliği Tutanakları',
+    description: 'Öğretmenler Kurulu, Zümreler, ŞÖK, Muayene-Kabul, Taşınır ve Disiplin Kurulu Tutanakları',
     icon: 'Briefcase',
     color: 'text-indigo-600',
     bgLight: 'bg-indigo-50 border-indigo-200 hover:border-indigo-300'

@@ -14,7 +14,8 @@ import {
   CheckCircle2,
   Clock,
   ArrowRight,
-  Bookmark
+  Bookmark,
+  HeartHandshake
 } from 'lucide-react';
 import { InstitutionProfile } from '../types';
 import { CATEGORIES } from '../data/categoriesData';
@@ -49,6 +50,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   const getCategoryIcon = (catId: string) => {
     switch (catId) {
       case 'bilsem_ozel': return Sparkles;
+      case 'oab': return HeartHandshake;
       case 'personel': return Users;
       case 'ogrenci': return GraduationCap;
       case 'isg': return ShieldAlert;

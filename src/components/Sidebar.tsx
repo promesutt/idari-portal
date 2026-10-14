@@ -14,7 +14,8 @@ import {
   Users,
   GraduationCap,
   Briefcase,
-  Lightbulb
+  Lightbulb,
+  HeartHandshake
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -160,6 +161,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
             >
               <Lightbulb className="w-3.5 h-3.5 text-rose-500" />
               <span>Projeler & Ar-Ge</span>
+            </button>
+            <button
+              onClick={() => {
+                setActiveView('templates_oab');
+                if (closeMobileMenu) closeMobileMenu();
+              }}
+              className={`w-full flex items-center space-x-2.5 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors ${
+                activeView === 'templates_oab' ? 'bg-cyan-50 text-cyan-800 font-semibold' : ''
+              }`}
+            >
+              <HeartHandshake className="w-3.5 h-3.5 text-cyan-600" />
+              <span>Okul Aile Birliği</span>
             </button>
           </div>
         </div>

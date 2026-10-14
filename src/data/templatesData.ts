@@ -756,5 +756,353 @@ Tarih: {TARIH}`,
       { id: 'ATOLYE_ADI', label: 'Atölye / Laboratuvar', type: 'text', defaultValue: 'Mekatronik, Tasarım ve Robotik Atölyesi' },
       { id: 'VELI_ADI', label: 'Veli Adı Soyadı', type: 'text', defaultValue: 'Cengiz POLAT' }
     ]
+  },
+
+  // ==========================================
+  // 8. OKUL AİLE BİRLİĞİ & TEFBİS
+  // ==========================================
+  {
+    id: 'oab-genel-kurul-cagrisi',
+    title: 'Okul Aile Birliği Olağan Genel Kurul Çağrı ve İlan Metni',
+    category: 'oab',
+    decimalCode: '841.04.01',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 10',
+    summary: 'Ekim ayı sonuna kadar yapılması zorunlu olan genel kurul için velilere gönderilen resmi gündemli davet metni.',
+    tags: ['Okul Aile Birliği', 'Genel Kurul', 'Ekim Ayı', 'Davet', 'Duyuru'],
+    suggestedAddressee: 'Sayın Velimiz,\n({OKUL_ADI} Okul Aile Birliği Genel Kuruluna)',
+    defaultSubject: 'Okul Aile Birliği Olağan Genel Kurul Toplantısı Çağrısı',
+    defaultBody: `Millî Eğitim Bakanlığı Okul-Aile Birliği Yönetmeliği hükümleri gereğince, kurumumuz 2026-2027 Eğitim Öğretim Yılı Okul Aile Birliği Olağan Genel Kurul Toplantısı {TOPLANTI_TARIHI} tarihinde saat {TOPLANTI_SAATI}'de kurumumuz {TOPLANTI_YERI} mahallinde gerçekleştirilecektir.
+
+Belirtilen tarihte çoğunluk sağlanamadığı takdirde, ikinci toplantı {ERTELENEN_TARIH} tarihinde aynı yer ve saatte çoğunluk aranmaksızın yapılacaktır.
+
+GÜNDEM MADDELERİ:
+1. Açılış, yoklama, toplantı yeter sayısının tespiti.
+2. Saygı duruşu ve İstiklal Marşı.
+3. Açık oyla bir Divan Başkanı ve iki Kâtip üyenin seçilmesi.
+4. Bir önceki döneme ait Yönetim Kurulu Faaliyet Raporunun okunması ve ibrası.
+5. Bir önceki döneme ait Denetleme Kurulu Raporunun okunması ve ibrası.
+6. Yeni dönem Yönetim Kuruluna veliler arasından 5 asıl, 5 yedek üyenin seçilmesi.
+7. Yeni dönem Denetleme Kuruluna veliler arasından 1 asıl, 1 yedek üyenin seçilmesi.
+8. Yeni eğitim öğretim yılı tahmini bütçesinin görüşülmesi ve onaylanması.
+9. Yeni Yönetim Kuruluna okulun eğitim, donatım, bakım-onarım ihtiyaçlarını karşılama ve TEFBİS harcama yetkisinin verilmesi.
+10. Dilek ve temenniler, kapanış.
+
+Okulumuzun ve öğrencilerimizin geleceğine yön verecek bu kritik toplantıya teşriflerinizi önemle rica ederim.`,
+    customFields: [
+      { id: 'TOPLANTI_TARIHI', label: '1. Toplantı Tarihi', type: 'date', defaultValue: '2026-10-18' },
+      { id: 'TOPLANTI_SAATI', label: 'Toplantı Saati', type: 'text', defaultValue: '11:00' },
+      { id: 'TOPLANTI_YERI', label: 'Toplantı Salonu', type: 'text', defaultValue: 'Merkez Konferans Salonu' },
+      { id: 'ERTELENEN_TARIH', label: 'Çoğunluk Sağlanamazsa 2. Tarih', type: 'date', defaultValue: '2026-10-25' }
+    ],
+    tips: ['Genel Kurul her yıl Ekim ayı sonuna kadar yapılmak zorundadır.', 'İlk toplantıda salt çoğunluk aranır; sağlanamazsa en geç 30 gün içinde çoğunluk aranmaksızın toplanılır.']
+  },
+  {
+    id: 'oab-genel-kurul-divan',
+    title: 'Okul Aile Birliği Genel Kurul Divan ve Seçim Tutanağı',
+    category: 'oab',
+    decimalCode: '841.04.01',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 11-14',
+    summary: 'Yönetim ve Denetim Kurulu asıl/yedek üyelerinin seçimi, tahmini bütçe ibrası ve TEFBİS harcama yetkisi tutanağı.',
+    tags: ['Okul Aile Birliği', 'Genel Kurul', 'Divan Tutanağı', 'Seçim', 'TEFBİS'],
+    suggestedAddressee: '{OKUL_ADI} OKUL AİLE BİRLİĞİ GENEL KURUL DİVANINA',
+    defaultSubject: 'Okul Aile Birliği Genel Kurul Sonuç ve Seçim Tutanağı',
+    defaultBody: `Toplantı Tarihi: {TOPLANTI_TARIHI}
+Toplantı Yeri: {TOPLANTI_YERI}
+Katılımcı Veli Sayısı: {KATILIMCI_SAYISI}
+
+Millî Eğitim Bakanlığı Okul-Aile Birliği Yönetmeliği doğrultusunda toplanan Genel Kurulda, yoklama yapılmış ve toplantı yeter sayısının bulunduğu anlaşılmıştır. Divan Başkanlığına {DIVAN_BASKANI}, Kâtipliğe {DIVAN_KATIP} oy birliğiyle seçilmiştir.
+
+1. Bir önceki döneme ait Yönetim Kurulu Faaliyet Raporu ve Denetleme Kurulu Raporu okunmuş, Genel Kurulca oy birliği ile İBRA EDİLMİŞTİR.
+2. 2026-2027 Eğitim Öğretim Yılı Tahmini Bütçesi {TAHMINI_BUTCE} TL olarak kararlaştırılmış ve onaylanmıştır.
+3. Yönetim Kuruluna veliler arasından gizli/açık oyla 5 asıl, 5 yedek üye; Denetleme Kuruluna 1 asıl, 1 yedek veli üye seçilmiştir:
+
+YÖNETİM KURULU ASIL ÜYELERİ (5 Kişi):
+{YONETIM_ASIL}
+
+YÖNETİM KURULU YEDEK ÜYELERİ (5 Kişi):
+{YONETIM_YEDEK}
+
+DENETLEME KURULU (1 Veli Asıl, 1 Veli Yedek + Öğretmenler Kurulunca Seçilen 2 Öğretmen):
+Veli Asıl Üye: {DENETIM_VELI_ASIL}
+Veli Yedek Üye: {DENETIM_VELI_YEDEK}
+Öğretmen Üyeler: {DENETIM_OGRETMENLER}
+
+4. Yeni seçilen Yönetim Kuruluna; okulun eğitim, atölye, bakım-onarım, kırtasiye ve sarf malzeme ihtiyaçlarını karşılama, TEFBİS sistemi üzerinden harcama yapma ve çift imza ile banka hesabı kullanma yetkisi verilmiştir.
+
+İşbu tutanak mahallinde tanzim edilerek Divanca imza altına alınmıştır.
+
+Divan Başkanı: {DIVAN_BASKANI} (İmza)
+Kâtip: {DIVAN_KATIP} (İmza)`,
+    customFields: [
+      { id: 'TOPLANTI_TARIHI', label: 'Toplantı Tarihi', type: 'date', defaultValue: '2026-10-18' },
+      { id: 'TOPLANTI_YERI', label: 'Toplantı Yeri', type: 'text', defaultValue: 'Okul Konferans Salonu' },
+      { id: 'KATILIMCI_SAYISI', label: 'Katılan Veli Sayısı', type: 'number', defaultValue: '68' },
+      { id: 'DIVAN_BASKANI', label: 'Divan Başkanı (Veli)', type: 'text', defaultValue: 'Av. Serkan YILMAZ' },
+      { id: 'DIVAN_KATIP', label: 'Kâtip Üye (Veli/Öğretmen)', type: 'text', defaultValue: 'Elif AKIN' },
+      { id: 'TAHMINI_BUTCE', label: 'Tahmini Bütçe (TL)', type: 'text', defaultValue: '180.000' },
+      { id: 'YONETIM_ASIL', label: 'Yönetim Kurulu Asıl (5 Kişi)', type: 'textarea', defaultValue: '1. Fatma ÖZTÜRK\n2. Murat ŞAHİN\n3. Derya KOÇ\n4. Hakan TEKİN\n5. Sevim YILDIZ' },
+      { id: 'YONETIM_YEDEK', label: 'Yönetim Kurulu Yedek (5 Kişi)', type: 'textarea', defaultValue: '1. Canan ER\n2. Tolga GÜL\n3. Merve AY\n4. Serhat KÖSE\n5. Banu ÇELİK' },
+      { id: 'DENETIM_VELI_ASIL', label: 'Denetim Veli Asıl', type: 'text', defaultValue: 'Ali CAN' },
+      { id: 'DENETIM_VELI_YEDEK', label: 'Denetim Veli Yedek', type: 'text', defaultValue: 'Ahmet BULUT' },
+      { id: 'DENETIM_OGRETMENLER', label: 'Öğretmenler Kurulu Temsilcileri', type: 'text', defaultValue: 'Zeynep AY (Öğretmen), Burak GÜN (Öğretmen)' }
+    ]
+  },
+  {
+    id: 'oab-yonetim-gorev-dagilimi',
+    title: 'OAB Yönetim Kurulu Görev Dağılımı Kararı',
+    category: 'oab',
+    decimalCode: '841.04.01',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 13',
+    summary: 'Genel kurul sonrası seçilen 5 veli üyenin ilk toplantısında Başkan, Bşk. Yrd., Muhasip, Sekreter ve Üye görevlerini belirlediği karar metni.',
+    tags: ['Yönetim Kurulu', 'Görev Dağılımı', 'Başkan', 'Muhasip', 'Karar Defteri'],
+    suggestedAddressee: '{OKUL_ADI} OKUL AİLE BİRLİĞİ YÖNETİM KURULUNA',
+    defaultSubject: 'Yönetim Kurulu Görev Dağılımı Kararı',
+    defaultBody: `Karar Tarihi: {KARAR_TARIHI}
+Karar No: {KARAR_NO}
+
+{OKUL_ADI} Okul Aile Birliği Yönetim Kurulu üyeleri {KARAR_TARIHI} tarihinde toplanarak MEB Okul-Aile Birliği Yönetmeliği'nin 13. maddesi gereğince kendi aralarında gizli/açık oyla görev dağılımı yapmış ve aşağıdaki şekilde oy birliği ile karara bağlanmıştır:
+
+1. BİRLİK BAŞKANLIĞINA: {BASKAN_ADI}
+2. BAŞKAN YARDIMCILIĞINA: {BASKAN_YRD_ADI}
+3. MUHASİP ÜYELİĞE: {MUHASIP_ADI}
+4. SEKRETERLİĞE: {SEKRETER_ADI}
+5. ÜYELİĞE: {UYE_ADI}
+
+Görev dağılımının okul müdürlüğüne bildirilmesine ve resmi işlemlerin başlatılmasına karar verilmiştir.
+
+Başkan: {BASKAN_ADI} (İmza)
+Başkan Yrd.: {BASKAN_YRD_ADI} (İmza)
+Muhasip: {MUHASIP_ADI} (İmza)
+Sekreter: {SEKRETER_ADI} (İmza)
+Üye: {UYE_ADI} (İmza)`,
+    customFields: [
+      { id: 'KARAR_TARIHI', label: 'Karar Tarihi', type: 'date', defaultValue: '2026-10-19' },
+      { id: 'KARAR_NO', label: 'Karar No', type: 'text', defaultValue: '2026/01' },
+      { id: 'BASKAN_ADI', label: 'Birlik Başkanı Adı', type: 'text', defaultValue: 'Fatma ÖZTÜRK' },
+      { id: 'BASKAN_YRD_ADI', label: 'Başkan Yardımcısı', type: 'text', defaultValue: 'Murat ŞAHİN' },
+      { id: 'MUHASIP_ADI', label: 'Muhasip Üye', type: 'text', defaultValue: 'Derya KOÇ' },
+      { id: 'SEKRETER_ADI', label: 'Sekreter Üye', type: 'text', defaultValue: 'Hakan TEKİN' },
+      { id: 'UYE_ADI', label: 'Üye', type: 'text', defaultValue: 'Sevim YILDIZ' }
+    ]
+  },
+  {
+    id: 'oab-banka-cift-imza-yetkisi',
+    title: 'OAB Banka Hesabı ve Çift İmza Yetkilendirme Kararı',
+    category: 'oab',
+    decimalCode: '841.04.02',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 16',
+    summary: 'Banka hesabından para çekme ve harcamalarda Birlik Başkanı ile Muhasip Üyenin çift imza yetkilendirilmesi kararı.',
+    tags: ['Banka', 'Çift İmza', 'TEFBİS', 'Yetki', 'Karar Defteri'],
+    suggestedAddressee: '{BANKA_ADI} {BANKA_SUBESI} ŞUBESİ MÜDÜRLÜĞÜNE',
+    defaultSubject: 'Banka Hesabı Çift İmza Yetkilendirmesi Kararı',
+    defaultBody: `Karar Tarihi: {KARAR_TARIHI}
+Karar No: {KARAR_NO}
+
+{OKUL_ADI} Okul Aile Birliği Yönetim Kurulu toplanarak aşağıdaki kararı almıştır:
+
+Birlik adına {BANKA_ADI} {BANKA_SUBESI} Şubesi nezdinde bulunan / açılacak olan {HESAP_NO} numaralı ve {IBAN_NO} IBAN nolu Okul Aile Birliği vadesiz mevduat hesabından para çekmeye, havale/EFT yapmaya ve bankacılık işlemlerini yürütmeye;
+
+MEB Okul-Aile Birliği Yönetmeliği'nin 16. maddesi gereğince, Birlik Başkanı {BASKAN_ADI} ({BASKAN_TC}) ile Birlik Muhasip Üyesi {MUHASIP_ADI} ({MUHASIP_TC})'nin ÇİFT İMZASI İLE müştereken yetkili kılınmalarına, Başkan veya Muhasip üyeden birinin bulunamaması halinde Başkan Yardımcısı {BASKAN_YRD_ADI} ({BASKAN_YRD_TC})'nin münferit değil diğer yetkili ile birlikte çift imzayla yetkili olmasına oy birliğiyle karar verilmiştir.
+
+Başkan: {BASKAN_ADI} (İmza)
+Muhasip: {MUHASIP_ADI} (İmza)
+Başkan Yrd.: {BASKAN_YRD_ADI} (İmza)
+Sekreter: {SEKRETER_ADI} (İmza)
+Üye: {UYE_ADI} (İmza)`,
+    customFields: [
+      { id: 'KARAR_TARIHI', label: 'Karar Tarihi', type: 'date', defaultValue: '2026-10-20' },
+      { id: 'KARAR_NO', label: 'Karar No', type: 'text', defaultValue: '2026/02' },
+      { id: 'BANKA_ADI', label: 'Banka Adı (Kamu Bankası)', type: 'text', defaultValue: 'T.C. Ziraat Bankası' },
+      { id: 'BANKA_SUBESI', label: 'Şube Adı', type: 'text', defaultValue: 'Güngören Şubesi' },
+      { id: 'HESAP_NO', label: 'Hesap No', type: 'text', defaultValue: '12345678-5001' },
+      { id: 'IBAN_NO', label: 'IBAN', type: 'text', defaultValue: 'TR12 0001 0000 1234 5678 5001' },
+      { id: 'BASKAN_ADI', label: 'Başkan Adı', type: 'text', defaultValue: 'Fatma ÖZTÜRK' },
+      { id: 'BASKAN_TC', label: 'Başkan T.C.', type: 'text', defaultValue: '11223344556' },
+      { id: 'MUHASIP_ADI', label: 'Muhasip Adı', type: 'text', defaultValue: 'Derya KOÇ' },
+      { id: 'MUHASIP_TC', label: 'Muhasip T.C.', type: 'text', defaultValue: '22334455667' },
+      { id: 'BASKAN_YRD_ADI', label: 'Başkan Yrd. Adı', type: 'text', defaultValue: 'Murat ŞAHİN' },
+      { id: 'BASKAN_YRD_TC', label: 'Başkan Yrd. T.C.', type: 'text', defaultValue: '33445566778' },
+      { id: 'SEKRETER_ADI', label: 'Sekreter', type: 'text', defaultValue: 'Hakan TEKİN' },
+      { id: 'UYE_ADI', label: 'Üye', type: 'text', defaultValue: 'Sevim YILDIZ' }
+    ]
+  },
+  {
+    id: 'oab-harcama-satin-alma',
+    title: 'OAB Harcama ve Malzeme Alım Karar Defteri Şablonu',
+    category: 'oab',
+    decimalCode: '841.04.02',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 16 ve TEFBİS İşlemleri',
+    summary: 'Okulun kırtasiye, temizlik, bilişim, atölye veya bakım-onarım ihtiyacının OAB bütçesinden karşılanmasına dair karar metni.',
+    tags: ['Harcama', 'Satın Alma', 'TEFBİS', 'Fatura', 'Karar Defteri'],
+    suggestedAddressee: '{OKUL_ADI} OKUL AİLE BİRLİĞİ YÖNETİM KURULUNA',
+    defaultSubject: 'Mal / Hizmet Satın Alımı ve Harcama Kararı',
+    defaultBody: `Karar Tarihi: {KARAR_TARIHI}
+Karar No: {KARAR_NO}
+
+Yönetim Kurulumuz {KARAR_TARIHI} tarihinde Birlik Başkanı {BASKAN_ADI} başkanlığında toplanarak aşağıdaki kararı almıştır:
+
+Kurumumuz müdürlüğünün {TALEP_YAZISI_BILGISI} ile bildirdiği acil ihtiyaçlar doğrultusunda; {ALINACAK_MALZEME_OZETI} temini maksadıyla piyasa fiyat araştırması yapılmış ve en uygun teklifi veren {FIRMA_ADI} firmasından {FATURA_TUTARI} TL (KDV Dahil) bedelle satın alınmasına;
+
+Bahse konu harcama bedelinin Birlik banka hesabından çift imza ile firma hesabına ödenmesine, faturanın TEFBİS sistemine işlenmesine ve evrakın birlik dosyasında muhafazasına oy birliği ile karar verilmiştir.
+
+Başkan: {BASKAN_ADI} (İmza)
+Başkan Yrd.: {BASKAN_YRD_ADI} (İmza)
+Muhasip: {MUHASIP_ADI} (İmza)
+Sekreter: {SEKRETER_ADI} (İmza)
+Üye: {UYE_ADI} (İmza)`,
+    customFields: [
+      { id: 'KARAR_TARIHI', label: 'Karar Tarihi', type: 'date', defaultValue: '2026-10-22' },
+      { id: 'KARAR_NO', label: 'Karar No', type: 'text', defaultValue: '2026/05' },
+      { id: 'BASKAN_ADI', label: 'Birlik Başkanı', type: 'text', defaultValue: 'Fatma ÖZTÜRK' },
+      { id: 'TALEP_YAZISI_BILGISI', label: 'Okul Talep Yazısı / İhtiyaç', type: 'text', defaultValue: '20.10.2026 tarihli okul temizlik ve kırtasiye malzeme talep yazısı' },
+      { id: 'ALINACAK_MALZEME_OZETI', label: 'Alınan Malzeme / Hizmet', type: 'textarea', defaultValue: 'Okul genelinde kullanılmak üzere 40 koli fotokopi kağıdı ve hijyen temizlik sarf malzemeleri' },
+      { id: 'FIRMA_ADI', label: 'Yüklenici Firma', type: 'text', defaultValue: 'Güngören Kırtasiye ve Büro Malzemeleri Tic. Ltd. Şti.' },
+      { id: 'FATURA_TUTARI', label: 'Fatura Tutarı (TL)', type: 'text', defaultValue: '14.850,00' },
+      { id: 'BASKAN_YRD_ADI', label: 'Başkan Yrd.', type: 'text', defaultValue: 'Murat ŞAHİN' },
+      { id: 'MUHASIP_ADI', label: 'Muhasip', type: 'text', defaultValue: 'Derya KOÇ' },
+      { id: 'SEKRETER_ADI', label: 'Sekreter', type: 'text', defaultValue: 'Hakan TEKİN' },
+      { id: 'UYE_ADI', label: 'Üye', type: 'text', defaultValue: 'Sevim YILDIZ' }
+    ]
+  },
+  {
+    id: 'oab-denetleme-raporu',
+    title: 'OAB Denetleme Kurulu Dönemlik Denetim Raporu',
+    category: 'oab',
+    decimalCode: '841.04.03',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 14',
+    summary: 'Yılda en az 2 defa yapılması yasal zorunluluk olan TEFBİS gelir-gider faturaları, banka ekstreleri ve defter denetimi raporu.',
+    tags: ['Denetleme Kurulu', 'Denetim Raporu', 'TEFBİS', 'Banka Ekstresi'],
+    suggestedAddressee: '{OKUL_ADI} MÜDÜRLÜĞÜ VE BİRLİK GENEL KURULUNA',
+    defaultSubject: 'Okul Aile Birliği Denetleme Kurulu Denetim Raporu ({DONEM})',
+    defaultBody: `Denetim Tarihi: {DENETIM_TARIHI}
+Denetlenen Dönem: {DONEM}
+
+Millî Eğitim Bakanlığı Okul-Aile Birliği Yönetmeliği'nin 14. maddesi gereğince, Denetleme Kurulumuz {DENETIM_TARIHI} tarihinde toplanarak Yönetim Kurulunun bahse konu döneme ait iş ve işlemlerini, karar defterini, harcama evraklarını, banka hesap özetlerini ve TEFBİS kayıtlarını incelemiştir.
+
+YAPILAN İNCELEMEDE:
+1. Birliğin karar defterinin usulüne uygun tutulduğu, kararların eksiksiz imzalandığı,
+2. Dönem içindeki toplam GELİRİN: {TOPLAM_GELIR} TL olduğu ve tamamının TEFBİS sistemine işlendiği,
+3. Dönem içindeki toplam GİDERİN: {TOPLAM_GIDER} TL olduğu, tüm harcamaların fatura ve belgeli olduğu,
+4. Banka vadesiz hesabında kalan MEVCUT BAKİYENİN: {BANKA_BAKIYESI} TL olduğu ve banka ekstresi ile TEFBİS bakiye kayıtlarının birebir örtüştüğü,
+5. Harcamaların okulun zorunlu eğitim, temizlik, güvenlik ve donatım ihtiyaçları doğrultusunda yapıldığı, çift imza kuralına riayet edildiği tespit edilmiştir.
+
+SONUÇ VE KANAAT:
+Yönetim Kurulunun faaliyetlerinin ilgili mevzuata, Genel Kurul yetkilerine ve TEFBİS standartlarına uygun yürütüldüğü tespit edilmiştir.
+
+Denetleme Kurulu Başkanı (Veli): {DENETIM_BASKANI} (İmza)
+Üye (Öğretmen): {OGRETMEN_UYE_1} (İmza)
+Üye (Öğretmen): {OGRETMEN_UYE_2} (İmza)`,
+    customFields: [
+      { id: 'DENETIM_TARIHI', label: 'Denetim Tarihi', type: 'date', defaultValue: '2027-01-15' },
+      { id: 'DONEM', label: 'Denetlenen Dönem', type: 'text', defaultValue: 'Ekim 2026 - Ocak 2027 (1. Dönem)' },
+      { id: 'TOPLAM_GELIR', label: 'Toplam Gelir (TL)', type: 'text', defaultValue: '86.450,00' },
+      { id: 'TOPLAM_GIDER', label: 'Toplam Gider (TL)', type: 'text', defaultValue: '64.120,00' },
+      { id: 'BANKA_BAKIYESI', label: 'Banka Kalan Bakiye (TL)', type: 'text', defaultValue: '22.330,00' },
+      { id: 'DENETIM_BASKANI', label: 'Denetleme Kurulu Başkanı (Veli)', type: 'text', defaultValue: 'Ali CAN' },
+      { id: 'OGRETMEN_UYE_1', label: 'Öğretmen Üye 1', type: 'text', defaultValue: 'Zeynep AY (Matematik Öğr.)' },
+      { id: 'OGRETMEN_UYE_2', label: 'Öğretmen Üye 2', type: 'text', defaultValue: 'Burak GÜN (Bilişim Öğr.)' }
+    ]
+  },
+  {
+    id: 'oab-devir-teslim-tutanagi',
+    title: 'OAB Yönetim Kurulu Resmi Devir-Teslim Tutanağı',
+    category: 'oab',
+    decimalCode: '841.04.01',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 24',
+    summary: 'Görevi devreden eski yönetim kurulunun yeni yönetime karar defteri, banka bakiyesi, TEFBİS yetkileri ve evrakları devretme tutanağı.',
+    tags: ['Devir Teslim', 'Kasa Devri', 'TEFBİS', 'Karar Defteri', 'Tutanak'],
+    suggestedAddressee: '{OKUL_ADI} MÜDÜRLÜĞÜNE',
+    defaultSubject: 'Okul Aile Birliği Devir Teslim Tutanağı',
+    defaultBody: `MEB Okul-Aile Birliği Yönetmeliği'nin 24. maddesi uyarınca, genel kurul seçimi neticesinde görevi sona eren Eski Yönetim Kurulu ile yeni seçilen Yönetim Kurulu arasında {DEVIR_TARIHI} tarihinde kurumumuzda toplanarak devir-teslim işlemi icra edilmiştir.
+
+DEVREDİLEN VE TESLİM ALINAN KIYMETLER:
+1. Karar Defteri (Son Karar No: {SON_KARAR_NO})
+2. Gelir-Gider Defteri ve TEFBİS Dosyası (Son TEFBİS Evrak No: {TEFBIS_NO})
+3. Alındı Belgeleri Koçanları (Kullanılan ve boş koçanlar)
+4. Banka Vadesiz Mevduat Hesabındaki Bakiye: {DEVREDILEN_BAKIYE} TL
+5. Nakit Kasa Bakiyesi: {KASA_BAKIYESI} TL
+6. Gelen-Giden Evrak Kayıt Dosyaları ve Harcama Faturaları Dosyası
+
+Yukarıda dökümü yazılı defter, evrak, banka bakiyesi ve yetkiler eksiksiz olarak teslim edilmiş ve teslim alınmıştır.
+
+DEVREDEN (Eski Başkan): {ESKI_BASKAN} (İmza)
+DEVREDEN (Eski Muhasip): {ESKI_MUHASIP} (İmza)
+TESLİM ALAN (Yeni Başkan): {YENI_BASKAN} (İmza)
+TESLİM ALAN (Yeni Muhasip): {YENI_MUHASIP} (İmza)
+GÖZLEMCİ (Okul Müdürü): {MUDUR_ADI} (İmza)`,
+    customFields: [
+      { id: 'DEVIR_TARIHI', label: 'Devir Tarihi', type: 'date', defaultValue: '2026-10-21' },
+      { id: 'SON_KARAR_NO', label: 'Eski Defter Son Karar No', type: 'text', defaultValue: '2026/18' },
+      { id: 'TEFBIS_NO', label: 'Son TEFBİS Evrak No', type: 'text', defaultValue: '2026/094' },
+      { id: 'DEVREDILEN_BAKIYE', label: 'Bankada Devredilen Bakiye (TL)', type: 'text', defaultValue: '31.450,50' },
+      { id: 'KASA_BAKIYESI', label: 'Nakit Kasa Bakiyesi (TL)', type: 'text', defaultValue: '0,00' },
+      { id: 'ESKI_BASKAN', label: 'Eski Birlik Başkanı', type: 'text', defaultValue: 'Ahmet YILDIRIM' },
+      { id: 'ESKI_MUHASIP', label: 'Eski Muhasip Üye', type: 'text', defaultValue: 'Süheyla KAYA' },
+      { id: 'YENI_BASKAN', label: 'Yeni Birlik Başkanı', type: 'text', defaultValue: 'Fatma ÖZTÜRK' },
+      { id: 'YENI_MUHASIP', label: 'Yeni Muhasip Üye', type: 'text', defaultValue: 'Derya KOÇ' }
+    ]
+  },
+  {
+    id: 'oab-sartli-bagis-kabul',
+    title: 'OAB Ayni ve Nakdi Şartlı Bağış Kabul Tutanağı',
+    category: 'oab',
+    decimalCode: '841.04.02',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 15',
+    summary: 'BİLSEM atölyelerine, laboratuvarlara veya okula hayırseverler ve kurumlarca yapılan cihaz, donatım veya nakit bağışların yasal kabul tutanağı.',
+    tags: ['Bağış', 'Şartlı Bağış', 'BİLSEM Atölye', 'Taşınır', 'Tutanak'],
+    suggestedAddressee: '{OKUL_ADI} OKUL AİLE BİRLİĞİ VE MÜDÜRLÜĞÜNE',
+    defaultSubject: 'Ayni / Nakdi Şartlı Bağış Kabul Tutanağı',
+    defaultBody: `{BAGISCI_KISI_KURUM} tarafından kurumumuz {KULLANIM_ALANI} ihtiyaçlarında kullanılmak üzere şartlı olarak bağışlanan aşağıda dökümü yazılı ayni/nakdi kıymetler {BAGIS_TARIHI} tarihinde teslim alınmıştır.
+
+BAĞIŞLANAN KIYMETLER:
+{BAGIS_DETAYLARI}
+
+Yaklaşık Piyasa / Fatura Değeri: {BAGIS_BEDELI} TL
+
+Bağışlanan malzemelerin Taşınır Mal Yönetmeliği uyarınca kurumun demirbaş kaydına geçirilmesine, ayni bağış alındı belgesinin düzenlenmesine ve bağışçıya teşekkür belgesi takdim edilmesine karar verilmiştir.
+
+Bağışçı / Temsilci: {BAGISCI_KISI_KURUM} (İmza)
+Birlik Başkanı: {BASKAN_ADI} (İmza)
+Okul Müdürü: {MUDUR_ADI} (İmza)`,
+    customFields: [
+      { id: 'BAGISCI_KISI_KURUM', label: 'Bağışçı Şahıs veya Kurum Adı', type: 'text', defaultValue: 'Hayırsever İş İnsanı / Şirket Adı' },
+      { id: 'KULLANIM_ALANI', label: 'Kullanım Alanı / Atölye', type: 'text', defaultValue: 'BİLSEM Robotik ve Yapay Zekâ Atölyesi' },
+      { id: 'BAGIS_TARIHI', label: 'Bağış Tarihi', type: 'date', defaultValue: '2026-10-24' },
+      { id: 'BAGIS_DETAYLARI', label: 'Bağışlanan Malzeme / Ekipman', type: 'textarea', defaultValue: '1. 2 Adet Bambu Lab X1-Carbon 3D Yazıcı\n2. 5 Adet Yüksek Performanslı İş İstasyonu Dizüstü Bilgisayar\n3. 20 kg Muhtelif Filament Seti' },
+      { id: 'BAGIS_BEDELI', label: 'Tahmini / Fatura Bedeli (TL)', type: 'text', defaultValue: '195.000,00' },
+      { id: 'BASKAN_ADI', label: 'Birlik Başkanı', type: 'text', defaultValue: 'Fatma ÖZTÜRK' }
+    ]
+  },
+  {
+    id: 'oab-kantin-kira-payi',
+    title: 'Okul Alanı / Kantin Kira Takip ve İlçe MEM Payı Bildirim Yazısı',
+    category: 'oab',
+    decimalCode: '841.04.02',
+    legalBasis: 'MEB Okul-Aile Birliği Yönetmeliği Madde 22',
+    summary: 'Okul kantini ve açık alan kiralama gelirlerinin %10 İlçe MEM ve %10 İl MEM paylarının ilgili hesaplara aktarıldığına dair resmi üst yazı.',
+    tags: ['Kantin', 'Kira', 'Arz Bedeli', 'İlçe MEM Payı', 'Üst Yazı'],
+    suggestedAddressee: '{ILCE_MEM} MÜDÜRLÜĞÜNE\n({ILCE_ADI})',
+    defaultSubject: 'Kantin Kira Gelir Payı Bildirimi ({AY_BILGISI})',
+    defaultBody: `Kurumumuz bünyesinde faaliyet gösteren okul kantininin {AY_BILGISI} ayı kira bedeli olarak işletmeci {ISLETMECI_ADI} tarafından {KIRA_BEDELI} TL birlik hesabımıza yatırılmıştır.
+
+MEB Okul-Aile Birliği Yönetmeliği'nin 22. maddesi gereğince;
+- %10 İlçe Millî Eğitim Müdürlüğü Payı ({ILCE_PAYI} TL),
+- %10 İl Millî Eğitim Müdürlüğü Payı ({IL_PAYI} TL)
+
+ilgili müdürlüklerin resmi banka hesaplarına aktarılmış olup dekont örnekleri ekte sunulmuştur.
+
+Gereğini arz ederim.`,
+    customFields: [
+      { id: 'AY_BILGISI', label: 'Kira Ayı', type: 'text', defaultValue: 'Ekim 2026' },
+      { id: 'ISLETMECI_ADI', label: 'Kantin İşletmecisi', type: 'text', defaultValue: 'Kantin İşletmecisi Adı' },
+      { id: 'KIRA_BEDELI', label: 'Aylık Toplam Kira (TL)', type: 'text', defaultValue: '18.000,00' },
+      { id: 'ILCE_PAYI', label: 'İlçe MEM %10 Payı (TL)', type: 'text', defaultValue: '1.800,00' },
+      { id: 'IL_PAYI', label: 'İl MEM %10 Payı (TL)', type: 'text', defaultValue: '1.800,00' }
+    ],
+    attachments: [
+      '1. İlçe MEM Payı Banka Dekontu (1 Adet)',
+      '2. İl MEM Payı Banka Dekontu (1 Adet)',
+      '3. Kantin Kira Tahsilat Makbuzu'
+    ]
   }
 ];

@@ -234,10 +234,24 @@ export const DECIMAL_CODES: DecimalCode[] = [
   },
   {
     code: '841.04.01',
-    name: 'Okul Aile Birliği Genel Kurul ve Harcama Tutanağı',
-    category: 'Mali & Taşınır İşleri',
+    name: 'Okul Aile Birliği Genel Kurul ve Divan İşlemleri',
+    category: 'Okul Aile Birliği & TEFBİS',
     isPopular: true,
-    description: 'OAB genel kurul divan tutanağı, yönetim-denetim raporları ve TEFBİS harcama kararları.'
+    description: 'OAB yıllık olağan genel kurul çağrıları, divan tutanağı, yönetim ve denetim kurulları seçimleri.'
+  },
+  {
+    code: '841.04.02',
+    name: 'TEFBİS Gelir-Gider Kayıtları ve Banka Harcama Kararları',
+    category: 'Okul Aile Birliği & TEFBİS',
+    isPopular: true,
+    description: 'Birliğin ayni/nakdi bağışları, TEFBİS fatura girişleri, çift imza yetkilendirmesi ve banka harcama kararları.'
+  },
+  {
+    code: '841.04.03',
+    name: 'OAB Denetleme Kurulu Raporları ve Devir-Teslim',
+    category: 'Okul Aile Birliği & TEFBİS',
+    isPopular: true,
+    description: 'Yılda en az iki defa yapılan denetleme kurulu raporları ve yeni yönetime resmi devir-teslim tutanakları.'
   },
   {
     code: '841.05.01',
