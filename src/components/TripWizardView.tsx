@@ -302,7 +302,7 @@ export const TripWizardView: React.FC<TripWizardViewProps> = ({ profile }) => {
           <div className="min-h-[420px]">
             {activeTab === 'letter' && (
               <div className="space-y-4 text-xs font-mono bg-slate-50 p-5 rounded-xl border border-slate-200 whitespace-pre-wrap leading-relaxed text-slate-800">
-                <div className="text-center font-bold text-sm">T.C.&#10;{profile.province} VALİLİĞİ / {profile.district} KAYMAKAMLIĞI&#10;{profile.schoolName} Müdürlüğü</div>
+                <div className="text-center font-bold text-sm">T.C.&#10;{profile.district} KAYMAKAMLIĞI&#10;{profile.schoolName} Müdürlüğü</div>
                 <div>Sayı : E-{profile.institutionCode}-821.05.01-41258&#10;Konu : Eğitim ve Bilim Gezisi Onayı ({tripData.destination})</div>
                 <div className="text-center font-bold">{tripData.tripType === 'il_disi' ? 'KAYMAKAMLIĞINA' : 'İLÇE MİLLÎ EĞİTİM MÜDÜRLÜĞÜNE'}&#10;({profile.district})</div>
                 <div>Kurumumuz öğrencilerinin bilimsel, teknolojik ve kültürel vizyonlarını geliştirmek amacıyla {tripData.tripDate} tarihinde {tripData.destination} mevkiine eğitim gezisi düzenlenmesi planlanmaktadır.

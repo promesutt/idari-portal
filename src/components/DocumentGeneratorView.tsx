@@ -509,7 +509,7 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
             <div className="text-center font-bold space-y-1 mb-8">
               <div className="text-base tracking-widest">T.C.</div>
               <div className="text-sm">
-                {docData.province} VALİLİĞİ / {docData.district} KAYMAKAMLIĞI
+                {docData.district} KAYMAKAMLIĞI
               </div>
               <div className="text-xs font-normal">
                 {docData.district} İlçe Millî Eğitim Müdürlüğü
