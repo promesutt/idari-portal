@@ -557,7 +557,7 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
                 {docData.district} KAYMAKAMLIĞI
               </div>
               <div className="text-xs font-normal">
-                {docData.district} İlçe Millî Eğitim Müdürlüğü
+                İlçe Millî Eğitim Müdürlüğü
               </div>
               <div className="text-sm font-bold tracking-tight">
                 {docData.schoolName} Müdürlüğü

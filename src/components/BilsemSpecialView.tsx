@@ -340,7 +340,7 @@ export const BilsemSpecialView: React.FC<BilsemSpecialViewProps> = ({
             </h2>
             <div className="p-6 bg-slate-50 rounded-xl border border-slate-200 font-mono text-xs space-y-4 whitespace-pre-wrap leading-relaxed text-slate-800">
               <div className="text-center font-bold text-sm">
-                T.C.&#10;{profile.district} KAYMAKAMLIĞI&#10;{profile.schoolName} Müdürlüğü&#10;&#10;BİREYSEL GELİŞİM VE DEĞERLENDİRME RAPORU
+                T.C.&#10;{profile.district} KAYMAKAMLIĞI&#10;İlçe Millî Eğitim Müdürlüğü&#10;{profile.schoolName} Müdürlüğü&#10;&#10;BİREYSEL GELİŞİM VE DEĞERLENDİRME RAPORU
               </div>
               <div>
                 Öğrenci: {reportData.studentName} ({reportData.tcNo})&#10;

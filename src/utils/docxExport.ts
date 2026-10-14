@@ -102,7 +102,7 @@ export const exportOfficialDocumentToDocx = async (
       spacing: { after: 60 },
       children: [
         new TextRun({
-          text: `${docData.district} İlçe Millî Eğitim Müdürlüğü`,
+          text: 'İlçe Millî Eğitim Müdürlüğü',
           font: 'Times New Roman',
           size: 22,
         }),
