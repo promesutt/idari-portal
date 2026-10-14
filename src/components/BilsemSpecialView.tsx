@@ -54,7 +54,7 @@ export const BilsemSpecialView: React.FC<BilsemSpecialViewProps> = ({
       date: new Date().toLocaleDateString('tr-TR'),
       addressee: `Sayın ${reportData.parentName}\n(${reportData.studentName} Velisi)`,
       body: `ÖĞRENCİ KİMLİK VE PROGRAM BİLGİLERİ:\nÖğrenci Adı Soyadı : ${reportData.studentName}\nT.C. Kimlik No      : ${reportData.tcNo}\nYetenek Alanı       : ${reportData.talentArea}\nDevam Ettiği Program: ${reportData.program}\nAtölye / Modül      : ${reportData.workshop}\nDanışman Öğretmen   : ${reportData.advisorTeacher}\nEğitim Dönemi       : ${reportData.term}\n\nGELİŞİM ALANLARI VE YETKİNLİK DEĞERLENDİRMELERİ:\n1. Bilimsel/Sanatsal Merak ve Problem Çözme: ${reportData.problemSolving}\n2. Yaratıcı Düşünme ve Özgün Üretim Becerisi: ${reportData.creativity}\n3. İletişim, İş Birliği ve Takım Çalışması  : ${reportData.teamwork}\n4. Proje Geliştirme ve Sorumluluk Bilinci   : ${reportData.responsibility}\n\nGENEL DEĞERLENDİRME VE GELECEK DÖNEM TAVSİYELERİ:\n${reportData.recommendations}\n\nÖğrencinin bir sonraki dönemde "${reportData.nextProgram}" programına devam etmesi Merkezimiz Bireysel Gelişim ve Değerlendirme Kurulunca uygun görülmüştür.`,
-      conclusionType: 'rica' as const,
+      conclusionType: 'none' as const,
       signerName: profile.principalName,
       signerTitle: profile.principalTitle,
     };

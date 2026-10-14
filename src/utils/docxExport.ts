@@ -9,6 +9,62 @@ import {
 import { saveAs } from 'file-saver';
 import { OfficialDocumentData } from '../types';
 
+/**
+ * Metnin son paragrafında zaten resmi bir sonuç ifadesi olup olmadığını denetler.
+ * Böylece gövde metninde zaten 'Gereğini arz ederim', 'Gereğini bilgilerinize arz ederim',
+ * 'Olurlarınıza arz ederim', 'Rica ederim' gibi ifadeler varken ikinci kez eklenmesini önler.
+ */
+export const hasEmbeddedConclusion = (body?: string): boolean => {
+  if (!body) return false;
+  const lines = body
+    .trim()
+    .split('\n')
+    .map((l) => l.trim().toLowerCase())
+    .filter(Boolean);
+
+  if (lines.length === 0) return false;
+  const lastLine = lines[lines.length - 1];
+
+  return (
+    lastLine.includes('arz ederim') ||
+    lastLine.includes('rica ederim') ||
+    lastLine.includes('arz ve rica') ||
+    lastLine.includes('olurlarınıza arz') ||
+    lastLine.includes('tensiplerinize arz') ||
+    lastLine.includes('saygılarımla arz') ||
+    lastLine.includes('tebliğ ederim') ||
+    lastLine.includes('arz olunur') ||
+    lastLine.includes('rica olunur')
+  );
+};
+
+/**
+ * Belge gövdesi ve seçilen sonuç tipi doğrultusunda basılacak nihai sonuç cümlesini döndürür.
+ * Eğer metin zaten sonuç cümlesi içeriyorsa veya 'none' seçilmişse null döner (mükerrerlik engellenir).
+ */
+export const getEffectiveConclusion = (
+  body?: string,
+  conclusionType?: 'arz' | 'rica' | 'arz_rica' | 'none'
+): string | null => {
+  if (!conclusionType || conclusionType === 'none') {
+    return null;
+  }
+
+  if (hasEmbeddedConclusion(body)) {
+    return null;
+  }
+
+  if (conclusionType === 'rica') {
+    return 'Gereğini rica ederim.';
+  } else if (conclusionType === 'arz_rica') {
+    return 'Gereğini arz ve rica ederim.';
+  } else if (conclusionType === 'arz') {
+    return 'Gereğini arz ederim.';
+  }
+
+  return null;
+};
+
 export const exportOfficialDocumentToDocx = async (
   docData: OfficialDocumentData,
   filename?: string
@@ -155,28 +211,25 @@ export const exportOfficialDocumentToDocx = async (
     }
   });
 
-  // Sonuç Cümlesi (Arz ederim / Rica ederim)
-  let conclusionText = 'Gereğini arz ederim.';
-  if (docData.conclusionType === 'rica') {
-    conclusionText = 'Gereğini rica ederim.';
-  } else if (docData.conclusionType === 'arz_rica') {
-    conclusionText = 'Gereğini arz ve rica ederim.';
-  }
+  // Sonuç Cümlesi (Arz ederim / Rica ederim) - Mükerrer önleme kontrollü
+  const conclusionText = getEffectiveConclusion(docData.body, docData.conclusionType);
 
-  paragraphs.push(
-    new Paragraph({
-      alignment: AlignmentType.JUSTIFIED,
-      spacing: { after: 360 },
-      indent: { firstLine: convertMillimetersToTwip(10) },
-      children: [
-        new TextRun({
-          text: conclusionText,
-          font: 'Times New Roman',
-          size: 24,
-        }),
-      ],
-    })
-  );
+  if (conclusionText) {
+    paragraphs.push(
+      new Paragraph({
+        alignment: AlignmentType.JUSTIFIED,
+        spacing: { after: 360 },
+        indent: { firstLine: convertMillimetersToTwip(10) },
+        children: [
+          new TextRun({
+            text: conclusionText,
+            font: 'Times New Roman',
+            size: 24,
+          }),
+        ],
+      })
+    );
+  }
 
   // İmza Bloğu (Sağ Tarafta)
   paragraphs.push(

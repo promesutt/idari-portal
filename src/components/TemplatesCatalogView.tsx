@@ -14,7 +14,7 @@ import {
 import { InstitutionProfile, DocumentTemplate, CategoryType } from '../types';
 import { TEMPLATES_DATA } from '../data/templatesData';
 import { CATEGORIES } from '../data/categoriesData';
-import { exportOfficialDocumentToDocx } from '../utils/docxExport';
+import { exportOfficialDocumentToDocx, hasEmbeddedConclusion } from '../utils/docxExport';
 
 interface TemplatesCatalogViewProps {
   profile: InstitutionProfile;
@@ -74,9 +74,9 @@ export const TemplatesCatalogView: React.FC<TemplatesCatalogViewProps> = ({
           .replace(/{OKUL_ADI}/g, profile.schoolName)
           .replace(/{ILCE_ADI}/g, profile.district),
         body: processedBody,
-        conclusionType: 'arz',
-        signerName: profile.principalName,
-        signerTitle: profile.principalTitle,
+        conclusionType: tpl.suggestedConclusionType || (hasEmbeddedConclusion(processedBody) ? 'none' : 'arz'),
+        signerName: tpl.suggestedSignerName || profile.principalName,
+        signerTitle: tpl.suggestedSignerTitle || profile.principalTitle,
         attachments: tpl.attachments ? tpl.attachments.join('\n') : '',
       });
     } catch (e) {

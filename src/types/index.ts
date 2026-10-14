@@ -53,6 +53,9 @@ export interface DocumentTemplate {
   suggestedAddressee?: string;
   defaultSubject?: string;
   defaultBody: string;
+  suggestedConclusionType?: 'arz' | 'rica' | 'arz_rica' | 'none';
+  suggestedSignerName?: string;
+  suggestedSignerTitle?: string;
   customFields?: TemplateField[];
   attachments?: string[];
   tips?: string[];
@@ -68,7 +71,7 @@ export interface OfficialDocumentData {
   addressee: string; // Muhatap (Örn: GÜNGÖREN İLÇE MİLLÎ EĞİTİM MÜDÜRLÜĞÜNE)
   interest?: string; // İlgi
   body: string; // Gövde Metni
-  conclusionType: 'arz' | 'rica' | 'arz_rica'; // Arz ederim / Rica ederim
+  conclusionType: 'arz' | 'rica' | 'arz_rica' | 'none'; // Arz ederim / Rica ederim / Yok
   signerName: string; // İmzalayan Adı
   signerTitle: string; // İmzalayan Unvanı
   attachments?: string; // Ekler

@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { InstitutionProfile, OfficialDocumentData, DocumentTemplate } from '../types';
 import { TEMPLATES_DATA } from '../data/templatesData';
-import { exportOfficialDocumentToDocx } from '../utils/docxExport';
+import { exportOfficialDocumentToDocx, hasEmbeddedConclusion, getEffectiveConclusion } from '../utils/docxExport';
 import { saveDocumentDraft } from '../utils/storage';
 
 interface DocumentGeneratorViewProps {
@@ -42,7 +42,7 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
     date: new Date().toLocaleDateString('tr-TR'),
     addressee: `${profile.district} İLÇE MİLLÎ EĞİTİM MÜDÜRLÜĞÜNE`,
     interest: '',
-    body: `Kurumumuz personeli hakkında düzenlenen bilgi ve belgeler ilişikte sunulmuştur.\n\nGereğini arz ederim.`,
+    body: `Kurumumuz bünyesinde yürütülen eğitim-öğretim ve yönetim faaliyetleri kapsamında düzenlenen bilgi ve belgeler ilişikte sunulmuştur.`,
     conclusionType: 'arz',
     signerName: profile.principalName,
     signerTitle: profile.principalTitle,
@@ -98,6 +98,28 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
       .replace(/{ILCE_ADI}/g, profile.district)
       .replace(/{ILCE_MEM}/g, `${profile.district} İLÇE MİLLÎ EĞİTİM`);
 
+    // Sonuç ifadesini akıllı belirleme (mükerrerliği önler)
+    let conclusion: 'arz' | 'rica' | 'arz_rica' | 'none' = 'arz';
+    if (tpl.suggestedConclusionType) {
+      conclusion = tpl.suggestedConclusionType;
+    } else if (hasEmbeddedConclusion(processedBody)) {
+      conclusion = 'none';
+    } else if (
+      tpl.category === 'kurullar' ||
+      tpl.title.toLowerCase().includes('tutanak') ||
+      tpl.title.toLowerCase().includes('karar') ||
+      tpl.title.toLowerCase().includes('çizelge') ||
+      tpl.title.toLowerCase().includes('rapor') ||
+      tpl.title.toLowerCase().includes('form') ||
+      tpl.title.toLowerCase().includes('taahhüt')
+    ) {
+      conclusion = 'none';
+    } else if (processedAddressee.includes('KAYMAKAM') || processedAddressee.includes('MÜDÜRLÜĞÜNE')) {
+      conclusion = 'arz';
+    } else {
+      conclusion = 'rica';
+    }
+
     setDocData({
       province: profile.province,
       district: profile.district,
@@ -108,9 +130,9 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
       addressee: processedAddressee,
       interest: '',
       body: processedBody,
-      conclusionType: processedAddressee.includes('KAYMAKAM') || processedAddressee.includes('MÜDÜRLÜĞÜNE') ? 'arz' : 'rica',
-      signerName: profile.principalName,
-      signerTitle: profile.principalTitle,
+      conclusionType: conclusion,
+      signerName: tpl.suggestedSignerName || profile.principalName,
+      signerTitle: tpl.suggestedSignerTitle || profile.principalTitle,
       attachments: tpl.attachments ? tpl.attachments.join('\n') : '',
       distribution: '',
     });
@@ -156,8 +178,9 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
   };
 
   const handleCopyForDYS = () => {
-    const fullText = `${docData.subject}\n\n${docData.addressee}\n\n${docData.interest ? `İlgi: ${docData.interest}\n\n` : ''}${docData.body}\n\n${
-      docData.conclusionType === 'rica' ? 'Gereğini rica ederim.' : docData.conclusionType === 'arz_rica' ? 'Gereğini arz ve rica ederim.' : 'Gereğini arz ederim.'
+    const effectiveConclusion = getEffectiveConclusion(docData.body, docData.conclusionType);
+    const fullText = `${docData.subject}\n\n${docData.addressee}\n\n${docData.interest ? `İlgi: ${docData.interest}\n\n` : ''}${docData.body}${
+      effectiveConclusion ? `\n\n${effectiveConclusion}` : ''
     }\n\n${docData.signerName}\n${docData.signerTitle}`;
 
     navigator.clipboard.writeText(fullText);
@@ -407,10 +430,17 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
 
             {/* Arz / Rica Radio */}
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-700">
-                Sonuç İfadesi (Kural: Üst makama Arz, Alt makama Rica)
-              </label>
-              <div className="flex items-center space-x-4 text-xs">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-semibold text-slate-700">
+                  Sonuç İfadesi (Kural: Üst makama Arz, Alt makama Rica)
+                </label>
+                {hasEmbeddedConclusion(docData.body) && (
+                  <span className="text-[10px] text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full font-medium">
+                    Metinde sonuç ifadesi mevcut
+                  </span>
+                )}
+              </div>
+              <div className="flex flex-wrap items-center gap-3 text-xs">
                 <label className="flex items-center space-x-1.5 cursor-pointer">
                   <input
                     type="radio"
@@ -441,7 +471,22 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
                   />
                   <span>Arz ve rica ederim.</span>
                 </label>
+                <label className="flex items-center space-x-1.5 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="conclusion"
+                    checked={docData.conclusionType === 'none'}
+                    onChange={() => setDocData({ ...docData, conclusionType: 'none' })}
+                    className="text-blue-600"
+                  />
+                  <span>Metne Dahil / Yok</span>
+                </label>
               </div>
+              {hasEmbeddedConclusion(docData.body) && docData.conclusionType !== 'none' && (
+                <p className="text-[11px] text-amber-700 bg-amber-50/70 p-1.5 rounded-md border border-amber-200/60 leading-tight">
+                  💡 Gövde metniniz zaten bir sonuç ifadesi ('...arz/rica ederim') içerdiği için belgenizde mükerrer cümle oluşması otomatik olarak engellenmiştir.
+                </p>
+              )}
             </div>
 
             {/* Signer Block */}
@@ -545,14 +590,12 @@ export const DocumentGeneratorView: React.FC<DocumentGeneratorViewProps> = ({
               {docData.body}
             </div>
 
-            {/* Conclusion */}
-            <div className="text-justify text-xs mt-4 indent-8">
-              {docData.conclusionType === 'rica'
-                ? 'Gereğini rica ederim.'
-                : docData.conclusionType === 'arz_rica'
-                ? 'Gereğini arz ve rica ederim.'
-                : 'Gereğini arz ederim.'}
-            </div>
+            {/* Conclusion (Mükerrerlik Kontrollü) */}
+            {getEffectiveConclusion(docData.body, docData.conclusionType) && (
+              <div className="text-justify text-xs mt-4 indent-8">
+                {getEffectiveConclusion(docData.body, docData.conclusionType)}
+              </div>
+            )}
 
             {/* Signer Block */}
             <div className="mt-12 ml-auto w-64 text-right space-y-1">

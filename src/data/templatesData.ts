@@ -19,6 +19,9 @@ export const TEMPLATES_DATA: DocumentTemplate[] = [
 İznimi geçireceğim adres ve iletişim bilgilerim aşağıda belirtilmiştir.
 
 Gereğini bilgilerinize arz ederim.`,
+    suggestedConclusionType: 'none',
+    suggestedSignerName: 'Öğretmen / Personel Adı Soyadı',
+    suggestedSignerTitle: 'Öğretmen',
     customFields: [
       { id: 'BRANS_UNVAN', label: 'Branş / Unvan', type: 'text', defaultValue: 'Öğretmen' },
       { id: 'MAZERET_SEBEBI', label: 'Mazeret Nedeni', type: 'text', defaultValue: 'ailevi mazeretim' },
@@ -39,9 +42,8 @@ Gereğini bilgilerinize arz ederim.`,
     defaultSubject: 'Hastalık Raporu İntikali ({PERSONEL_ADI})',
     defaultBody: `Kurumumuz personeli {PERSONEL_ADI} ({TC_NO}), {SAGLIK_KURUMU} tarafından düzenlenen {RAPOR_TARIHI} tarihli ve {RAPOR_NO} sayılı {GUN_SAYISI} günlük hastalık raporunu kurumumuza ibraz etmiştir.
 
-Söz konusu raporun incelenerek hastalık iznine çevrilmesi ve MEBBİS / SGK kayıtlarına işlenmesi hususunda;
-
-Gereğini arz ederim.`,
+Söz konusu raporun incelenerek hastalık iznine çevrilmesi ve MEBBİS / SGK kayıtlarına işlenmesi hususunda;`,
+    suggestedConclusionType: 'arz',
     customFields: [
       { id: 'PERSONEL_ADI', label: 'Personel Adı Soyadı', type: 'text', defaultValue: 'Ahmet YILMAZ' },
       { id: 'TC_NO', label: 'T.C. Kimlik No', type: 'text', defaultValue: '12345678901' },
@@ -64,9 +66,8 @@ Gereğini arz ederim.`,
     defaultSubject: 'Göreve Başlama ({PERSONEL_ADI})',
     defaultBody: `Kurumumuz {BRANS_UNVAN} kadrosunda görevli iken {IZIN_TURU} nedeniyle ayrılan {PERSONEL_ADI} ({TC_NO}), {BASLAMA_TARIHI} tarihi itibarıyla kurumumuzdaki fiili görevine başlamıştır.
 
-Maaş ve özlük işlemlerinin başlatılması hususunda;
-
-Gereğini arz ederim.`,
+Maaş ve özlük işlemlerinin başlatılması hususunda;`,
+    suggestedConclusionType: 'arz',
     customFields: [
       { id: 'PERSONEL_ADI', label: 'Personel Adı Soyadı', type: 'text', defaultValue: 'Ayşe KAYA' },
       { id: 'TC_NO', label: 'T.C. No', type: 'text', defaultValue: '23456789012' },
@@ -89,6 +90,7 @@ Gereğini arz ederim.`,
     defaultBody: `Kurumumuz {BRANS_UNVAN} kadrosunda görev yapan {OGRETMEN_ADI} tarafından ekte sunulan çalışma programı doğrultusunda {ETKINLIK_ADI} alanında haftada {HAFTALIK_SAAT} saat ders dışı eğitim çalışması yapılması müdürlüğümüzce uygun görülmektedir.
 
 Makamlarınızca da uygun görülmesi halinde söz konusu çalışmanın {BASLANGIC_TARIHI} - {BITIS_TARIHI} tarihleri arasında yürütülmesi hususunu olurlarınıza arz ederim.`,
+    suggestedConclusionType: 'none',
     customFields: [
       { id: 'OGRETMEN_ADI', label: 'Öğretmen Adı Soyadı', type: 'text', defaultValue: 'Mehmet DEMİR' },
       { id: 'BRANS_UNVAN', label: 'Branş / Unvan', type: 'text', defaultValue: 'Bilişim Teknolojileri Öğretmeni' },
@@ -503,9 +505,8 @@ Kâtip Üye: {DIVAN_KATIP} (İmza)`,
     defaultSubject: '{PROJE_TURU} Proje Başvuru Onayı ({PROJE_BASLIGI})',
     defaultBody: `Müdürlüğümüz bünyesinde görev yapan {YURUTUCU_ADI} yürütücülüğünde hazırlanan ve ekte detayları sunulan "{PROJE_BASLIGI}" başlıklı {PROJE_TURU} proje başvurusu kurumumuzca incelenmiş ve uygun bulunmuştur.
 
-Projenin kabul edilmesi halinde kurumumuz laboratuvar, atölye ve fiziki imkânlarının proje çalışmalarına tahsis edileceği taahhüt olunur.
-
-Gereğini bilgilerinize arz ederim.`,
+Projenin kabul edilmesi halinde kurumumuz laboratuvar, atölye ve fiziki imkânlarının proje çalışmalarına tahsis edileceği taahhüt olunur.`,
+    suggestedConclusionType: 'arz',
     customFields: [
       { id: 'PROJE_TURU', label: 'Proje Programı', type: 'select', defaultValue: 'TÜBİTAK 2204-B Ortaokul Öğrencileri Araştırma Projesi', options: ['TÜBİTAK 4006 Bilim Fuarı', 'TÜBİTAK 2204-A Lise Araştırma Projeleri', 'TÜBİTAK 2204-B Ortaokul Öğrencileri Araştırma Projesi', 'TÜBİTAK 4004 Doğa Eğitimi'] },
       { id: 'PROJE_BASLIGI', label: 'Proje Başlığı', type: 'text', defaultValue: 'Yapay Zekâ Destekli Akıllı Tarım ve Sulama Sistemi' },
@@ -525,11 +526,12 @@ Gereğini bilgilerinize arz ederim.`,
     defaultSubject: 'TEKNOFEST Takım Katılımı Veli Muvafakatnamesi',
     defaultBody: `Velisi bulunduğum kurumunuz öğrencisi {OGRENCI_ADI}'nin {TAKIM_ADI} bünyesinde "{KATEGORI_ADI}" yarışma kategorisinde görev almasına; okul saatleri dışında ve hafta sonlarında yapılacak atölye/laboratuvar çalışmalarına katılmasına, yarışma finallerine danışman öğretmen {DANIŞMAN_ADI} refakatinde seyahat etmesine muvafakat ediyorum.
 
-Gereğini bilgilerinize arz ederim.
-
 Veli Adı Soyadı: {VELI_ADI}
 İmza:
 Tarih: {TARIH}`,
+    suggestedConclusionType: 'none',
+    suggestedSignerName: '{VELI_ADI}',
+    suggestedSignerTitle: 'Öğrenci Velisi',
     customFields: [
       { id: 'OGRENCI_ADI', label: 'Öğrenci Adı Soyadı', type: 'text', defaultValue: 'Emre KARTAL' },
       { id: 'TAKIM_ADI', label: 'Takım Adı', type: 'text', defaultValue: 'Güngören BİLSEM Roket Takımı' },
@@ -584,6 +586,7 @@ Geziye ait plan, veli muvafakatnameleri, sözleşme ve araç evrakları incelenm
 Söz konusu gezinin {SORUMLU_OGRETMEN} sorumluluğunda ve ekli listede yer alan öğretmen ve öğrencilerin katılımıyla gerçekleştirilmesi hususunu;
 
 Olurlarınıza arz ederim.`,
+    suggestedConclusionType: 'none',
     customFields: [
       { id: 'GEZI_HEDEFI', label: 'Gezi Yapılacak Yer', type: 'text', defaultValue: 'Kocaeli Bilim Merkezi ve TÜBİTAK MAM' },
       { id: 'GEZI_TARIHI', label: 'Gezi Tarihi', type: 'date', defaultValue: '2026-10-25' },
@@ -719,13 +722,16 @@ GENEL DÖNEM DEĞERLENDİRMESİ VE TAVSİYELER:
     tags: ['BİLSEM', 'Kayıt Dondurma', 'Veli Dilekçesi'],
     suggestedAddressee: '{OKUL_ADI} MÜDÜRLÜĞÜNE',
     defaultSubject: 'BİLSEM Kayıt Dondurma Talebi',
-    defaultBody: `Velisi bulunduğum merkeziniz {PROGRAM_ADI} programı öğrencisi {OGRENCI_ADI}'nin {DONDURMA_GEREKCESI} gerekçesiyle {EGITIM_YILI} eğitim öğretim yılı boyunca BİLSEM kaydının dondurulmasını arz ederim.
+    defaultBody: `Velisi bulunduğum merkeziniz {PROGRAM_ADI} programı öğrencisi {OGRENCI_ADI}'nin {DONDURMA_GEREKCESI} gerekçesiyle {EGITIM_YILI} eğitim öğretim yılı boyunca BİLSEM kaydının dondurulması hususunda;
 
-Gereğinin yapılmasını saygılarımla arz ederim.
+Gereğini saygılarımla arz ederim.
 
 Veli Adı Soyadı: {VELI_ADI}
 İmza:
 Tarih: {TARIH}`,
+    suggestedConclusionType: 'none',
+    suggestedSignerName: '{VELI_ADI}',
+    suggestedSignerTitle: 'Öğrenci Velisi',
     customFields: [
       { id: 'OGRENCI_ADI', label: 'Öğrenci Adı Soyadı', type: 'text', defaultValue: 'Defne YILDIZ' },
       { id: 'PROGRAM_ADI', label: 'Kayıtlı Olduğu Program', type: 'text', defaultValue: 'ÖYG-2 Programı' },
@@ -1089,9 +1095,8 @@ MEB Okul-Aile Birliği Yönetmeliği'nin 22. maddesi gereğince;
 - %10 İlçe Millî Eğitim Müdürlüğü Payı ({ILCE_PAYI} TL),
 - %10 İl Millî Eğitim Müdürlüğü Payı ({IL_PAYI} TL)
 
-ilgili müdürlüklerin resmi banka hesaplarına aktarılmış olup dekont örnekleri ekte sunulmuştur.
-
-Gereğini arz ederim.`,
+ilgili müdürlüklerin resmi banka hesaplarına aktarılmış olup dekont örnekleri ekte sunulmuştur.`,
+    suggestedConclusionType: 'arz',
     customFields: [
       { id: 'AY_BILGISI', label: 'Kira Ayı', type: 'text', defaultValue: 'Ekim 2026' },
       { id: 'ISLETMECI_ADI', label: 'Kantin İşletmecisi', type: 'text', defaultValue: 'Kantin İşletmecisi Adı' },

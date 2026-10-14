@@ -50,7 +50,7 @@ export const TripWizardView: React.FC<TripWizardViewProps> = ({ profile }) => {
       date: new Date().toLocaleDateString('tr-TR'),
       addressee: `${profile.district} ${authority}`,
       body: `Kurumumuz öğrencilerinin bilimsel, teknolojik ve kültürel vizyonlarını geliştirmek amacıyla ${tripData.tripDate} tarihinde ${tripData.destination} mevkiine eğitim gezisi düzenlenmesi planlanmaktadır.\n\nMEB Sosyal Etkinlikler Yönetmeliği hükümleri uyarınca gezi planı, veli muvafakatnameleri, TÜRSAB sözleşmesi, araç ve sürücü evrakları incelenmiş olup eksiksiz olarak dosyalanmıştır.\n\nSöz konusu gezinin ${tripData.responsibleTeacher} sorumluluğunda, ekli listede yer alan ${tripData.studentCount} öğrenci ve refakatçi öğretmenler nezaretinde ${tripData.plateNumber} plakalı araç ile gerçekleştirilmesi hususunu;\n\nOlurlarınıza arz ederim.`,
-      conclusionType: 'arz' as const,
+      conclusionType: 'none' as const,
       signerName: profile.principalName,
       signerTitle: profile.principalTitle,
       attachments: `1. Gezi Planı ve Seyahat Çizelgesi (1 Adet)\n2. Katılımcı Öğrenci ve Öğretmen Listesi (1 Adet)\n3. Veli İzin (Muvafakat) Belgeleri Dosyası\n4. TÜRSAB Seyahat Sözleşmesi ve Yetki Belgesi\n5. Araç Ruhsatı ve Periyodik Muayene Belgesi\n6. D-2 Yetki Belgesi\n7. Sürücü Ehliyeti ve SRC-2 / Psikoteknik Belgeleri\n8. Zorunlu Koltuk Ferdi Kaza Sigortası Poliçesi`,
